@@ -15,8 +15,9 @@ h1 {
 button {
   width: 100px;
   height: 50px;
-  background-color: white;
-  border: solid 5px #ff00ff;
+  background-color: #ff00ff;
+  border: solid 3px black;
+  font-weight: bold;
   font-size: 15px;
   font-family: sans-serif;
 }

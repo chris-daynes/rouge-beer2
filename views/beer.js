@@ -2,8 +2,8 @@ var html = require('yo-yo')
 
 module.exports = (beer, dispatch) =>
   html `
-   <div>
-      <div>
+   <div class ="one-beer">
+      <div class="beer-name">
         ${beer.name}
       </div>
       <div>

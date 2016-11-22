@@ -33,3 +33,27 @@ button {
   font-weight: bold;
   font-size: 18px;
 }
+
+.loading {
+  font-size: 25px;
+  font-family: sans-serif;
+  color: #ff00ff;
+}
+
+.hide {
+  display: none;
+}
+
+.nz {
+  margin-left: 80%;
+  position: relative;
+  right: 130px;
+  margin-bottom: 20px;
+}
+
+.side-bar {
+  background-color: #D6E3B5;
+  width: 20%;
+  margin-left: 50%;
+  position: absolute;
+}

@@ -7,10 +7,6 @@ var request = require('superagent')
 
 var beersTemplate = require('./views/beers')
 
-var main = document.querySelector('main')
-var app = document.createElement('div')
-main.appendChild(app)
-
 // var initialState = {
 //   "beers": [
 //   {
@@ -28,29 +24,18 @@ main.appendChild(app)
 //   }]
 // }
 
-var initialState = { beers: [] }
+var initialState = { beers: [], isFilterNZ: false, isLoading: false }
 
 var store = redux.createStore(reducer, initialState)
-const dispatch = store.dispatch
+const {dispatch, subscribe, getState} = store
 
-const updateView = () => {
-  const state = store.getState()
-  const newView = beersTemplate(state, dispatch)
-  morphdom(view, newView)
-}
-const view = beersTemplate(initialState, dispatch)
+var main = document.querySelector('main')
+var app = document.createElement('div')
+main.appendChild(app)
 
-document.body.appendChild(view)
+subscribe(() => {
+  const state = getState()
+  html.update(app, beersTemplate(state, dispatch))
+})
 
-store.subscribe(updateView)
-
-
-function callAPI(state, dispatch) {
-request
-  .get('http://rogue-beers.herokuapp.com/api/v1/beers')
-  .end(function (err, res) {
-    console.log(res.body)
-    if (err) return
-    dispatch({type: 'RECEIVE_BEERS', payload: res.body.beers})
-  })
-}
+dispatch({type: 'INIT'})
